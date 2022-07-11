@@ -1,0 +1,49 @@
+<div class="table-div">
+  <p-table *ngIf="invoiceList as data" [value]="data" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+      <tr>
+        <th width="150px">
+          <p-checkbox name="invoiceItemCheck"
+                      (onChange)="reviewAllSelectionChange()" [(ngModel)]="allSelected" [binary]="true"></p-checkbox>
+        </th>
+        <th>Name</th>
+        <th>Amount</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-data>
+      <tr>
+        <td>
+          <p-checkbox name="invoiceItemCheck" (onChange)="reviewSelectionChange()"
+                      [(ngModel)]="data.checked" [binary]="true"></p-checkbox>
+        </td>
+        <td>{{data.name}}</td>
+        <td class="bold-font">${{data.amount}}</td>
+      </tr>
+    </ng-template>
+
+  </p-table>
+
+  <i class="pi pi-spin pi-spinner spinner-format" style="font-size: 3.5vh" *ngIf="showSpinner"></i>
+
+  <div class="d-flex justify-content-between">
+
+    <div style="margin-left: 1vw">
+      <button [disabled]="noSelectedItems" pButton type="button" label="Deselect all"
+              class="p-button-danger button-margin" icon="pi pi-times" (click)="deselectSelectedItems()"></button>
+    </div>
+
+    <div style="margin-right: 1vw" class="d-flex gap-3">
+      <button [disabled]="noSelectedItems" pButton type="button" label="Generate PDF"
+              class="p-button-primary button-margin" icon="pi pi-check" (click)="generatePdf()"></button>
+
+      <button [disabled]="nothingToPreviewOrDownload" pButton label="Preview PDF"
+              class="p-button-secondary button-margin" icon="pi pi-eye" (click)="previewPdf()"></button>
+
+      <button [disabled]="nothingToPreviewOrDownload" pButton label="Download PDF"
+              class="p-button-success button-margin" icon="pi pi-download" (click)="downloadPdf()"></button>
+    </div>
+
+  </div>
+
+</div>

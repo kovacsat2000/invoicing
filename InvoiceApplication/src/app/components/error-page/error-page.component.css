@@ -1,0 +1,28 @@
+.error-page {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin-top: -6vh;
+  gap: 0.5vh;
+}
+
+.error-title,
+.error-message {
+  color: #443737;
+}
+
+.error-title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 40px;
+}
+
+.retry-button {
+  margin-top: 2vh;
+  width: 15vw;
+  min-width: 12vh;
+}
